@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreativeMarket - Pasar Karya Kreatif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4A43D9;
+            --accent: #FF6584;
+            --dark: #2A2A3C;
+            --light: #F8F9FF;
+            --gray: #8A8AA3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #f0f1ff 0%, #e6e7ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hero-title span {
+            color: var(--primary);
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 35px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            transform: translateY(20px);
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        }
+        
+        .shape {
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0.1;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, var(--accent), #ff8da1);
+            opacity: 0.1;
+            bottom: 50px;
+            left: 100px;
+            transform: rotate(45deg);
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .section-description {
+            color: var(--gray);
+            font-size: 18px;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 30px;
+        }
+        
+        .step-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .step-description {
+            color: var(--gray);
+        }
+        
+        /* Featured Works */
+        .featured-works {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f1ff 100%);
+        }
+        
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .work-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+        }
+        
+        .work-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .work-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f1f3ff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .work-item:hover .work-image img {
+            transform: scale(1.1);
+        }
+        
+        .work-category {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .work-info {
+            padding: 25px;
+        }
+        
+        .work-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .work-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        
+        .work-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 280px;
+            background: linear-gradient(135deg, #f8f9ff, #e6e7ff);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item .content {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .gallery-item h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .gallery-item p {
+            color: var(--gray);
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .gallery-item .date {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .gallery-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 40%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0.1;
+            z-index: 1;
+            border-radius: 0 20px 20px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            color: white;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 15px;
+        }
+        
+        .copyright strong {
+            color: var(--primary);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                margin-bottom: 50px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+            
+            .section-header {
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-palette"></i>Creative<span>Market</span></a>
+            <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Karya</a></li>
+                <li><a href="#">Kreator</a></li>
+                <li><a href="#">Layanan</a></li>
+                <li><a href="#">Testimoni</a></li>
+                <li><a href="#">Aplikasi</a></li>
+            </ul>
+            <a href="#" class="btn">Mulai Jelajah</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-subtitle">Pasar Kreatif Terkemuka</div>
+                <h1 class="hero-title">Temukan Karya <span>Ilustrasi & Desain</span> Impian Anda</h1>
+                <p class="hero-description">
+                    CreativeMarket adalah tempat terbaik untuk menemukan karya kreatif berkualitas tinggi. Kami menghubungkan talenta kreatif dengan mereka yang membutuhkan solusi desain yang inspiratif dan profesional.
+                </p>
+                <a href="#" class="btn">Jelajahi Karya</a>
+                <a href="#" class="btn btn-outline" style="margin-left: 15px;">Lihat Demo</a>
+            </div>
+            <div class="hero-image">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop" alt="Ilustrasi Kreatif">
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Proses Kami</div>
+                <h2 class="section-title">Cara Kerja Kami dalam 3 Langkah</h2>
+                <p class="section-description">
+                    Kami membuat proses menemukan dan mendapatkan karya kreatif menjadi mudah dan menyenangkan.
+                </p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="step-title">Fase Riset</h3>
+                    <p class="step-description">
+                        Jelajahi koleksi karya kreatif kami yang luas. Gunakan filter untuk menemukan gaya dan jenis karya yang sesuai kebutuhan Anda.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="step-title">Buat Kesepakatan</h3>
+                    <p class="step-description">
+                        Hubungi kreator atau langsung beli karya yang tersedia. Kami memfasilitasi proses transaksi yang aman dan transparan.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3 class="step-title">Tentukan Harga</h3>
+                    <p class="step-description">
+                        Dapatkan karya berkualitas dengan harga yang wajar. Kami menjamin harga yang kompetitif untuk semua jenis karya kreatif.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Works -->
+    <section class="featured-works">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Karya Unggulan</div>
+                <h2 class="section-title">Karya Ilustrasi & Desain Terpopuler</h2>
+                <p class="section-description">
+                    Temukan karya-karya terbaik dari kreator berbakat di seluruh dunia.
+                </p>
+            </div>
+            <div class="works-grid">
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=1974&auto=format&fit=crop" alt="Ilustrasi Digital">
+                        <div class="work-category">Ilustrasi</div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">Karakter Fantasi</h3>
+                        <p class="work-description">Ilustrasi karakter fantasi dengan gaya anime modern.</p>
+                        <                        <div class="work-price">Rp 850.000</div>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop" alt="Desain Logo">
+                        <div class="work-category">Logo</div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">Brand Identity</h3>
+                        <p class="work-description">Paket lengkap identitas merek untuk perusahaan startup.</p>
+                        <div class="work-price">Rp 1.200.000</div>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop" alt="Pattern Design">
+                        <div class="work-category">Pattern</div>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">Geometric Patterns</h3>
+                        <p class="work-description">Koleksi pattern geometris untuk produk fashion dan desain.</p>
+                        <div class="work-price">Rp 650.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Koleksi Karya</div>
+                <h2 class="section-title">Inspirasi Kreatif dari Kreator Kami</h2>
+                <p class="section-description">
+                    Berbagai karya ilustrasi dan desain grafis yang menginspirasi.
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <!-- Karya 1 -->
+                <div class="gallery-item">
+                    <div class="gallery-bg"></div>
+                    <div class="content">
+                        <h3>Santai & Kreatif</h3>
+                        <p>"Gw sih santai... Orangnya nganggur btw..." - Karya yang menggambarkan gaya hidup santai para kreator.</p>
+                        <div class="date">Karya Ilustrasi</div>
+                    </div>
+                </div>
+                
+                <!-- Karya 2 -->
+                <div class="gallery-item">
+                    <div class="gallery-bg"></div>
+                    <div class="content">
+                        <h3>Idul Adha</h3>
+                        <p>"Bukan berapa besar hewan yang kamu qurbankan, tapi seberapa ikhlas hatimu dalam melakukannya" - Desain bertema keagamaan.</p>
+                        <div class="date">6 Juni 2025</div>
+                    </div>
+                </div>
+                
+                <!-- Karya 3 -->
+                <div class="gallery-item">
+                    <div class="gallery-bg"></div>
+                    <div class="content">
+                        <h3>Makna Nama</h3>
+                        <p>"Setiap nama membawa identitas, tapi tindakanlah yang memberi kehormatan" - Ilustrasi bertema filosofi hidup.</p>
+                        <div class="date">Karya Abadi</div>
+                    </div>
+                </div>
+                
+                <!-- Karya 4 -->
+                <div class="gallery-item">
+                    <div class="gallery-bg"></div>
+                    <div class="content">
+                        <h3>Jenjang Karir</h3>
+                        <p>"Gua Mau Jos - Kosan. Jadi Juragan BEP-nya Lama Banget Anjir" - Ilustrasi tentang perjuangan karir.</p>
+                        <div class="date">CKU Timur, Sumatera Selatan</div>
+                    </div>
+                </div>
+                
+                <!-- Karya 5 -->
+                <div class="gallery-item">
+                    <div class="gallery-bg"></div>
+                    <div class="content">
+                        <h3>Hari Buku</h3>
+                        <p>"Beyond time, beyond stars, beyond imagination" - Desain poster untuk Hari Buku Bersama Indihome.</p>
+                        <div class="date">Kampanye Literasi</div>
+                    </div>
+                </div>
+                
+                <!-- Karya 6 -->
+                <div class="gallery-item">
+                    <div class="gallery-bg"></div>
+                    <div class="content">
+                        <h3>Ramadhan</h3>
+                        <p>"Every fast is a shield, every prayer is a weapon" - Desain kalender bertema Ramadhan 1446 H.</p>
+                        <div class="date">Kalender Islami</div>
+                    </div>
+                </div>
+                
+                <!-- Karya 7 -->
+                <div class="gallery-item">
+                    <div class="gallery-bg"></div>
+                    <div class="content">
+                        <h3>Figur Shampoo</h3>
+                        <p>PVC Figure 1/7 Shampoo - Ranma 1/2 - Koleksi figur karakter anime populer.</p>
+                        <div class="date">IDR 3.550.000</div>
+                    </div>
+                </div>
+                
+                <!-- Karya 8 -->
+                <div class="gallery-item">
+                    <div class="gallery-bg"></div>
+                    <div class="content">
+                        <h3>Hidup Sehat</h3>
+                        <p>"Mari Bergerak! Semangat hidup sehat, demi masa depan lebih kuat" - Desain kampanye kesehatan.</p>
+                        <div class="date">Kolaborasi IndiHome & Telkomsel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="footer-title">Menu</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Karya</a></li>
+                        <li><a href="#">Kreator</a></li>
+                        <li><a href="#">Layanan</a></li>
+                        <li><a href="#">Testimoni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">Perusahaan</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Aplikasi Kami</a></li>
+                        <li><a href="#">Brochure</a></li>
+                        <li><a href="#">Karir</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">Hubungi Kami</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@creativemarket.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(022) - 1234 - 5678</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jl. Kreativitas No. 123, Bandung, Jawa Barat</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © Copyright 2024 by <strong>CreativeMarket</strong>, All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation for header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '5px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.08)';
+            }
+        });
+        
+        // Gallery hover effect enhancement
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-15px)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
